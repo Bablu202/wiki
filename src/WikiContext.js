@@ -28,6 +28,7 @@ function WikiProvider({ children }) {
 
   //Get Response from EndPoint FETCH Here
   const getResponse = async () => {
+    if (results >= 1 && search === storedValue[storedValue.length - 1]) return;
     setIsLoading(true);
     try {
       let json = await (await fetch(endpoint)).json();
@@ -46,11 +47,13 @@ function WikiProvider({ children }) {
 
   //AUTO Submit with timer -- setBug*
   useEffect(() => {
+    if (results >= 1 && search === storedValue[storedValue.length - 1]) return;
+
     if (search === "") return;
     const timeOut = setTimeout(() => {
       console.log("time out");
       getResponse();
-    }, 1500);
+    }, 1000);
     return () => {
       console.log("return time");
       clearTimeout(timeOut);
