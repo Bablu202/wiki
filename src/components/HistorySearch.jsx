@@ -6,7 +6,11 @@ export default function HistorySearch() {
   return (
     <div className="p-2">
       <div className="flex mx-4 mb-2">
-        <h6 className="font-semibold text-sm">also searched for..</h6>
+        {storedValue.length > 0 ? (
+          <h6 className="font-semibold text-sm">also searched for..</h6>
+        ) : (
+          <h6 className="font-semibold text-sm">start Searching..</h6>
+        )}
         <button
           className="btn ml-auto"
           onClick={() => {
